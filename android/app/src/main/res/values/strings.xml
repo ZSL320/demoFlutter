@@ -1,0 +1,40 @@
+<resources>
+    <string name="title_activity_base">BaseActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- PoiSearchActivity title hint -->
+    <string name="string_gaode_location_mine_location">我的位置</string>
+    <string name="string_gaode_location_search_hint">请输入检索关键字</string>
+    <string name="string_gaode_location_title_uptown">住宅区</string>
+    <string name="string_gaode_location_title_school">学校</string>
+    <string name="string_gaode_location_title_building">楼宇</string>
+    <string name="string_gaode_location_title_shopping">商场</string>
+
+    <string name="title_location">获取定位数据</string>
+    <string name="battery_saving">低功耗模式</string>
+    <string name="device_sensors">仅设备模式</string>
+    <string name="hight_accuracy">高精度模式</string>
+    <string name="interval">定位周期(ms)</string>
+    <string name="httpTimeout">网络超时(ms)</string>
+    <string name="location_once">单次定位</string>
+    <string name="needAddress">逆地理编码</string>
+    <string name="cacheAble">开启缓存</string>
+    <string name="onceLastest">提高首次定位精度</string>
+    <string name="gpsFirst">GPS优先</string>
+    <string name="useSensor">使用传感器</string>
+    <string name="wifiScan">开启wifi扫描</string>
+
+    <string name="alarmInterval">唤醒周期(s)</string>
+
+    <string name="startLocation">开始定位</string>
+    <string name="stopLocation">停止定位</string>
+
+    <string name="defaultInteval">2000</string>
+    <string name="defaultHttpTimeout">30000</string>
+</resources>

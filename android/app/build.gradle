@@ -1,0 +1,92 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
+    lintOptions {
+        checkReleaseBuilds  false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.example.zslDev"
+        minSdkVersion 19
+        targetSdkVersion 30
+        multiDexEnabled true
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            //热修复支持五种
+            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a'
+        }
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'demo'              //别名
+            keyPassword '123456'        //key密码
+            storePassword '123456'    // store的密码，注意是否与key的密码相同
+            storeFile file('demo.jks')//key的路径，注意不能与release版本相同
+        }
+        release {
+            keyAlias 'demo'
+            keyPassword '123456'
+            storePassword '123456'
+            storeFile file('demo.jks')
+        }
+    }
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+            zipAlignEnabled true
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            zipAlignEnabled true                    //Zipalign优化
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    compile 'com.amap.api:3dmap:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+}
