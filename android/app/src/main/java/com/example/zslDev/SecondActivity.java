@@ -43,6 +43,10 @@ import com.example.zslDev.poisearch.PoiAroundSearchActivity;
 import com.example.zslDev.poisearch.PoiKeywordSearchActivity;
 import com.example.zslDev.poisearch.PoiSearchActivity;
 import com.example.zslDev.view.FeatureView;
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.platform.PlatformViewFactory;
 //import com.demo.app.poisearch.PoiAroundSearchActivity;
 //import com.demo.app.poisearch.PoiKeywordSearchActivity;
 //import com.demo.app.route.RouteActivity;
@@ -87,6 +91,8 @@ public final class SecondActivity extends ListActivity {
     }
 
     private static final DemoDetails[] demos = {
+            new DemoDetails(R.string.location_map, R.string.location_data,
+                    MainActivityDemo.class),
             new DemoDetails(R.string.location_map, R.string.location_data,
                     LocationDataActivity.class),
             new DemoDetails(R.string.basic_map, R.string.basic_description,
@@ -175,7 +181,7 @@ public final class SecondActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        System.exit(0);
+//        System.exit(0);
     }
 
     @Override

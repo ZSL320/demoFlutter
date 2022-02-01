@@ -33,7 +33,8 @@ public class MainActivity extends FlutterActivity {
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
 //        super.configureFlutterEngine(flutterEngine);
         GeneratedPluginRegistrant.registerWith(flutterEngine);
-
+        //注册插件
+        flutterEngine.getPlugins().add(new MyPlatformViewPlugin());
         methodChannel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), METHOD_CHANNEL);
         //接受fltuter端传递过来的方法，并做出响应逻辑处理
         methodChannel.setMethodCallHandler(new MethodChannel.MethodCallHandler() {
@@ -73,10 +74,6 @@ public class MainActivity extends FlutterActivity {
 
             }
         });
-
-
-
-
     }
 
     //TODO 新版本flutter在configureFlutterEngine完成初始化

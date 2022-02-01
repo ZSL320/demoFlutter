@@ -60,10 +60,7 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="zslDev">
-        <activity android:name=".locationData.LocationDataActivity" />
-        <activity android:name=".poisearch.CheckPermissionsActivity" />
-        <activity android:name=".poisearch.PoiSearchActivity" />
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".MainActivityDemo"></activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -210,7 +207,15 @@
         <activity
             android:name=".offlinemap.OfflineMapActivity"
             android:label="@string/offlinemap_demo"
-            android:screenOrientation="portrait" /> <!-- <activity -->
+            android:screenOrientation="portrait" />
+        <activity android:name=".MyPlatformViewPlugin" />
+        <activity android:name=".MyPlatformViewFactory" />
+        <activity android:name=".MyPlatformView" />
+        <activity android:name=".locationData.LocationDataActivity" />
+        <activity android:name=".poisearch.CheckPermissionsActivity" />
+        <activity android:name=".poisearch.PoiSearchActivity" />
+        <activity android:name=".SecondActivity" /> <!-- 111111111111111111111111111111111111111111111111111111111111111 -->
+        <!-- <activity -->
         <!-- android:name=".district.DistrictActivity" -->
         <!-- android:label="@string/district_demo" -->
         <!-- android:screenOrientation="portrait" /> -->
