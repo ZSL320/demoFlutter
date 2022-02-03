@@ -36,10 +36,6 @@ public class EventsActivity extends Activity implements OnMapClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			MapsInitializer.updatePrivacyAgree(this,true);
-			MapsInitializer.updatePrivacyShow(this,true,true);
-		}catch (Exception e){}
 		setContentView(R.layout.events_activity);
 		/*
 		 * 设置离线地图存储目录，在下载离线地图或初始化地图设置; 使用过程中可自行设置, 若自行设置了离线地图存储的路径，

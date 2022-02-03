@@ -24,10 +24,6 @@ public class BasicMapActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			MapsInitializer.updatePrivacyAgree(this,true);
-			MapsInitializer.updatePrivacyShow(this,true,true);
-		}catch (Exception e){}
 		setContentView(R.layout.basicmap_activity);
 	    /*
          * 设置离线地图存储目录，在下载离线地图或初始化地图设置;

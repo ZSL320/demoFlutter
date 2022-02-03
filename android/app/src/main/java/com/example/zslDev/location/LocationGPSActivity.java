@@ -27,7 +27,7 @@ import com.example.zslDev.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LocationGPSActivity extends CheckPermissionsActivity implements LocationSource, AMapLocationListener {
+public class LocationGPSActivity extends Activity implements LocationSource, AMapLocationListener {
 		public AMapLocationClient client=null;
 		private AMapLocationClientOption option=null;
 		private MapView mapView;
@@ -37,10 +37,6 @@ public class LocationGPSActivity extends CheckPermissionsActivity implements Loc
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			try {
-				MapsInitializer.updatePrivacyAgree(this,true);
-				MapsInitializer.updatePrivacyShow(this,true,true);
-			}catch (Exception e){}
 			setContentView(R.layout.locationsource_activity);
 			try {
 				initView(savedInstanceState);

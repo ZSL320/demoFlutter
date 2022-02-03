@@ -1,0 +1,1036 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.zslDev"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="32" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:10:5-67
+14-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:10:22-64
+15    <!--
+16     io.flutter.app.FlutterApplication is an android.app.Application that
+17         calls FlutterMain.startInitialization(this); in its onCreate method.
+18         In most cases you can leave this as-is, but you if you want to provide
+19         additional functionality it is fine to subclass or reimplement
+20         FlutterApplication and put your custom class here.
+21    -->
+22    <!-- 项目权限模块(这里写这个的目的就是为了方便，将权限中区分开不同的模块，便于后期其他人进行维护，管理) -->
+23    <!-- 允许程序打开网络套接字 -->
+24    <!-- 用于访问GPS定位 -->
+25    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 用于进行网络定位 -->
+25-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:21:5-85
+25-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:21:22-82
+26    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问GPS定位 -->
+26-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:5-81
+26-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:22-78
+27    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
+27-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:23:5-79
+27-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:23:22-76
+28    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+28-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:5-79
+28-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:22-76
+29    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+29-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:5-76
+29-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:22-73
+30    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于读取手机当前的状态 -->
+30-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:5-76
+30-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:22-73
+31    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
+31-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:5-75
+31-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:22-72
+32    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于申请调用A-GPS模块 -->
+32-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:29:5-31:40
+32-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:30:9-65
+33    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
+33-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:32:5-89
+33-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:32:22-86
+34    <uses-permission android:name="android.permission.BLUETOOTH" />
+34-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:33:5-68
+34-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:33:22-65
+35    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 允许程序设置内置sd卡的写权限 -->
+35-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:34:5-74
+35-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:34:22-71
+36    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
+36-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:29:5-31:40
+36-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:30:9-65
+37    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+37-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:5-79
+37-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:22-76
+38    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
+38-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:5-76
+38-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:22-73
+39    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+39-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:5-75
+39-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:22-72
+40    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许程序设置内置sd卡的写权限 -->
+40-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:5-81
+40-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:22-78
+41    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
+41-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:29:5-31:40
+41-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:30:9-65
+42    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+42-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:5-79
+42-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:22-76
+43    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
+43-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:5-76
+43-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:22-73
+44    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 用于申请调用A-GPS模块 -->
+44-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:5-75
+44-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:22-72
+45    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+45-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:32:5-89
+45-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:32:22-86
+46    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+46-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:5-79
+46-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:22-76
+47    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+47-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:5-76
+47-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:22-73
+48    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于读取手机当前的状态 -->
+48-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:5-76
+48-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:22-73
+49    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+49-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:5-75
+49-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:22-72
+50    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+50-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:29:5-31:40
+50-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:30:9-65
+51    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+51-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:29:5-31:40
+51-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:30:9-65
+52    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+52-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:5-81
+52-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:22:22-78
+53    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+53-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:5-79
+53-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:24:22-76
+54    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+54-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:23:5-79
+54-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:23:22-76
+55    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+55-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:5-75
+55-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:28:22-72
+56    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+56-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:5-76
+56-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:26:22-73
+57    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+57-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:5-76
+57-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:25:22-73
+58    <uses-permission android:name="android.permission.WAKE_LOCK" />
+58-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:67:5-68
+58-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:67:22-65
+59    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+59-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:68:5-80
+59-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:68:22-77
+60    <uses-permission android:name="android.permission.BLUETOOTH" />
+60-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:33:5-68
+60-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:33:22-65
+61
+62    <queries>
+62-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-15:15
+63        <intent>
+63-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-14:18
+64            <action android:name="android.intent.action.GET_CONTENT" />
+64-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-72
+64-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:21-69
+65
+66            <data android:mimeType="*/*" />
+66-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-44
+66-->[:file_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\file_picker-4.3.3\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:19-41
+67        </intent>
+68    </queries>
+69
+70    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+70-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-83
+70-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-80
+71
+72    <application
+72-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:72:5-497:19
+73        android:name="androidx.multidex.MultiDexApplication"
+74        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+74-->[androidx.core:core:1.3.1] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\3975ffd70914deb17405b14313b8e4ba\core-1.3.1\AndroidManifest.xml:24:18-86
+75        android:debuggable="true"
+76        android:icon="@mipmap/ic_launcher"
+76-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:73:9-43
+77        android:label="zslDev"
+77-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:74:9-31
+78        android:testOnly="true" >
+79        <activity android:name="com.example.zslDev.MainActivityDemo" />
+79-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:75:9-63
+79-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:75:19-51
+80        <activity
+80-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:76:9-100:20
+81            android:name="com.example.zslDev.MainActivity"
+81-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:77:13-41
+82            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+82-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:78:13-163
+83            android:exported="true"
+83-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:79:13-36
+84            android:hardwareAccelerated="true"
+84-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:80:13-47
+85            android:launchMode="singleTop"
+85-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:81:13-43
+86            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+86-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:82:13-69
+87            android:windowSoftInputMode="adjustResize" >
+87-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:83:13-55
+88
+89            <!--
+90                 Specifies an Android theme to apply to this Activity as soon as
+91                 the Android process has started. This theme is visible to the user
+92                 while the Flutter UI initializes. After that, this theme continues
+93                 to determine the Window background behind the Flutter UI.
+94            -->
+95            <meta-data
+95-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:91:13-93:57
+96                android:name="io.flutter.embedding.android.NormalTheme"
+96-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:92:17-72
+97                android:resource="@style/NormalTheme" />
+97-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:93:17-54
+98
+99            <intent-filter>
+99-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:95:13-99:29
+100                <action android:name="android.intent.action.MAIN" />
+100-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:96:17-69
+100-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:96:25-66
+101
+102                <category android:name="android.intent.category.LAUNCHER" />
+102-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:98:17-77
+102-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:98:27-74
+103            </intent-filter>
+104        </activity>
+105        <!--
+106 Don't delete the meta-data below.
+107             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+108        -->
+109        <meta-data
+109-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:105:9-107:33
+110            android:name="flutterEmbedding"
+110-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:106:13-44
+111            android:value="2" />
+111-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:107:13-30
+112
+113        <activity
+113-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:109:9-112:52
+114            android:name="com.example.zslDev.basic.BasicMapActivity"
+114-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:110:13-51
+115            android:label="@string/basic_map"
+115-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:111:13-46
+116            android:screenOrientation="portrait" />
+116-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:112:13-49
+117        <activity
+117-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:113:9-116:52
+118            android:name="com.example.zslDev.basic.BaseMapFragmentActivity"
+118-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:114:13-58
+119            android:label="@string/basic_map"
+119-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:115:13-46
+120            android:screenOrientation="portrait" />
+120-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:116:13-49
+121        <activity
+121-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:117:9-120:52
+122            android:name="com.example.zslDev.basic.CameraActivity"
+122-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:118:13-49
+123            android:label="@string/camera_demo"
+123-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:119:13-48
+124            android:screenOrientation="portrait" />
+124-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:120:13-49
+125        <activity
+125-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:121:9-124:52
+126            android:name="com.example.zslDev.basic.HeatMapActivity"
+126-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:122:13-50
+127            android:label="@string/heatmap_demo"
+127-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:123:13-49
+128            android:screenOrientation="portrait" />
+128-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:124:13-49
+129        <activity
+129-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:125:9-128:52
+130            android:name="com.example.zslDev.basic.EventsActivity"
+130-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:126:13-49
+131            android:label="@string/events_demo"
+131-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:127:13-48
+132            android:screenOrientation="portrait" />
+132-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:128:13-49
+133        <activity
+133-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:129:9-132:52
+134            android:name="com.example.zslDev.basic.LayersActivity"
+134-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:130:13-49
+135            android:label="@string/layers_demo"
+135-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:131:13-48
+136            android:screenOrientation="portrait" />
+136-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:132:13-49
+137        <activity
+137-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:133:9-136:52
+138            android:name="com.example.zslDev.basic.PoiClickActivity"
+138-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:134:13-51
+139            android:label="@string/poiclick_demo"
+139-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:135:13-50
+140            android:screenOrientation="portrait" /> <!-- <activity -->
+140-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:136:13-49
+141        <!-- android:name="com.demo.app.basic.MapOptionActivity" -->
+142        <!-- android:label="@string/mapOption_demo" -->
+143        <!-- android:screenOrientation="portrait" /> -->
+144        <activity
+144-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:140:9-143:52
+145            android:name="com.example.zslDev.basic.ScreenShotActivity"
+145-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:141:13-53
+146            android:label="@string/screenshot_demo"
+146-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:142:13-52
+147            android:screenOrientation="portrait" />
+147-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:143:13-49
+148        <activity
+148-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:144:9-147:52
+149            android:name="com.example.zslDev.basic.OpenglActivity"
+149-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:145:13-49
+150            android:label="@string/opengl_demo"
+150-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:146:13-48
+151            android:screenOrientation="portrait" />
+151-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:147:13-49
+152        <activity
+152-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:148:9-151:52
+153            android:name="com.example.zslDev.basic.UiSettingsActivity"
+153-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:149:13-53
+154            android:label="@string/uisettings_demo"
+154-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:150:13-52
+155            android:screenOrientation="portrait" />
+155-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:151:13-49
+156        <activity
+156-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:152:9-155:52
+157            android:name="com.example.zslDev.overlay.MarkerActivity"
+157-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:153:13-51
+158            android:label="@string/marker_demo"
+158-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:154:13-48
+159            android:screenOrientation="portrait" />
+159-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:155:13-49
+160        <activity
+160-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:156:9-159:52
+161            android:name="com.example.zslDev.overlay.PolylineActivity"
+161-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:157:13-53
+162            android:label="@string/polyline_demo"
+162-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:158:13-50
+163            android:screenOrientation="portrait" />
+163-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:159:13-49
+164        <activity
+164-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:160:9-163:52
+165            android:name="com.example.zslDev.overlay.ArcActivity"
+165-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:161:13-48
+166            android:label="@string/arc_demo"
+166-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:162:13-45
+167            android:screenOrientation="portrait" />
+167-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:163:13-49
+168        <activity
+168-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:164:9-167:52
+169            android:name="com.example.zslDev.overlay.GroundOverlayActivity"
+169-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:165:13-58
+170            android:label="@string/groundoverlay_demo"
+170-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:166:13-55
+171            android:screenOrientation="portrait" />
+171-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:167:13-49
+172        <activity
+172-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:168:9-171:52
+173            android:name="com.example.zslDev.overlay.PolygonActivity"
+173-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:169:13-52
+174            android:label="@string/polygon_demo"
+174-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:170:13-49
+175            android:screenOrientation="portrait" />
+175-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:171:13-49
+176        <activity
+176-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:172:9-175:52
+177            android:name="com.example.zslDev.overlay.CircleActivity"
+177-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:173:13-51
+178            android:label="@string/circle_demo"
+178-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:174:13-48
+179            android:screenOrientation="portrait" />
+179-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:175:13-49
+180        <activity
+180-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:176:9-179:52
+181            android:name="com.example.zslDev.overlay.NavigateArrowOverlayActivity"
+181-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:177:13-65
+182            android:label="@string/navigatearrow_demo"
+182-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:178:13-55
+183            android:screenOrientation="portrait" />
+183-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:179:13-49
+184        <activity
+184-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:180:9-183:52
+185            android:name="com.example.zslDev.location.LocationSourceActivity"
+185-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:181:13-60
+186            android:label="@string/locationsource_demo"
+186-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:182:13-56
+187            android:screenOrientation="portrait" />
+187-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:183:13-49
+188        <activity
+188-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:184:9-187:52
+189            android:name="com.example.zslDev.location.LocationSensorSourceActivity"
+189-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:185:13-66
+190            android:label="@string/locationSensorGPS_demo"
+190-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:186:13-59
+191            android:screenOrientation="portrait" />
+191-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:187:13-49
+192        <activity
+192-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:188:9-191:52
+193            android:name="com.example.zslDev.location.LocationModeSourceActivity"
+193-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:189:13-64
+194            android:label="@string/locationmodesource_demo"
+194-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:190:13-60
+195            android:screenOrientation="portrait" />
+195-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:191:13-49
+196        <activity
+196-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:192:9-195:52
+197            android:name="com.example.zslDev.location.LocationGPSActivity"
+197-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:193:13-57
+198            android:label="@string/locationGPS_demo"
+198-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:194:13-53
+199            android:screenOrientation="portrait" />
+199-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:195:13-49
+200        <activity
+200-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:196:9-199:52
+201            android:name="com.example.zslDev.location.LocationNetworkActivity"
+201-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:197:13-61
+202            android:label="@string/locationNetwork_demo"
+202-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:198:13-57
+203            android:screenOrientation="portrait" /> <!-- <activity -->
+203-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:199:13-49
+204        <!-- android:name=".geocoder.GeocoderActivity" -->
+205        <!-- android:label="@string/geocoder_demo" -->
+206        <!-- android:screenOrientation="portrait" /> -->
+207        <!-- <activity -->
+208        <!-- android:name=".route.RouteActivity" -->
+209        <!-- android:label="@string/route_demo" -->
+210        <!-- android:screenOrientation="portrait" /> -->
+211        <activity
+211-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:207:9-210:52
+212            android:name="com.example.zslDev.busline.BuslineActivity"
+212-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:208:13-52
+213            android:label="@string/busline_demo"
+213-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:209:13-49
+214            android:screenOrientation="portrait" />
+214-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:210:13-49
+215        <activity
+215-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:211:9-214:52
+216            android:name="com.example.zslDev.poisearch.PoiKeywordSearchActivity"
+216-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:212:13-63
+217            android:label="@string/poikeywordsearch_demo"
+217-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:213:13-58
+218            android:screenOrientation="portrait" />
+218-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:214:13-49
+219        <activity
+219-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:215:9-218:52
+220            android:name="com.example.zslDev.poisearch.PoiAroundSearchActivity"
+220-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:216:13-62
+221            android:label="@string/poiaroundsearch_demo"
+221-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:217:13-57
+222            android:screenOrientation="portrait" />
+222-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:218:13-49
+223        <activity
+223-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:219:9-222:52
+224            android:name="com.example.zslDev.offlinemap.OfflineMapActivity"
+224-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:220:13-58
+225            android:label="@string/offlinemap_demo"
+225-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:221:13-52
+226            android:screenOrientation="portrait" />
+226-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:222:13-49
+227        <activity android:name="com.example.zslDev.MyPlatformViewPlugin" />
+227-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:223:9-58
+227-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:223:19-55
+228        <activity android:name="com.example.zslDev.MyPlatformViewFactory" />
+228-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:224:9-59
+228-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:224:19-56
+229        <activity android:name="com.example.zslDev.MyPlatformView" />
+229-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:225:9-52
+229-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:225:19-49
+230        <activity android:name="com.example.zslDev.locationData.LocationDataActivity" />
+230-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:226:9-71
+230-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:226:19-68
+231        <activity android:name="com.example.zslDev.poisearch.CheckPermissionsActivity" />
+231-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:227:9-72
+231-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:227:19-69
+232        <activity android:name="com.example.zslDev.poisearch.PoiSearchActivity" />
+232-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:228:9-65
+232-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:228:19-62
+233        <activity android:name="com.example.zslDev.SecondActivity" />
+233-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:229:9-52
+233-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:229:19-49
+234
+235        <!-- 111111111111111111111111111111111111111111111111111111111111111 -->
+236
+237        <activity
+237-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:233:9-236:51
+238            android:name="com.example.zslDev.activity.IndexActivity"
+238-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:234:13-51
+239            android:label="@string/app_name"
+239-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:235:13-45
+240            android:screenOrientation="portrait" />
+240-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:236:13-49
+241        <activity
+241-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:237:9-240:88
+242            android:name="com.amap.api.navi.AmapRouteActivity"
+242-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:238:13-63
+243            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+243-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:240:13-85
+244            android:launchMode="singleInstance" />
+244-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:239:13-48
+245        <activity
+245-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:241:9-245:69
+246            android:name="com.example.zslDev.activity.BasicNaviActivity"
+246-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:242:13-55
+247            android:configChanges="orientation|keyboardHidden|screenSize"
+247-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:243:13-74
+248            android:label="@string/app_name"
+248-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:244:13-45
+249            android:theme="@android:style/Theme.Light.NoTitleBar" />
+249-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:245:13-66
+250        <activity
+250-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:246:9-250:69
+251            android:name="com.example.zslDev.activity.CustomZoomInIntersectionViewActivity"
+251-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:247:13-74
+252            android:configChanges="orientation|keyboardHidden|screenSize"
+252-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:248:13-74
+253            android:label="@string/app_name"
+253-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:249:13-45
+254            android:theme="@android:style/Theme.Light.NoTitleBar" />
+254-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:250:13-66
+255        <activity
+255-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:251:9-255:69
+256            android:name="com.example.zslDev.activity.CustomRouteActivity"
+256-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:252:13-57
+257            android:configChanges="orientation|keyboardHidden|screenSize"
+257-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:253:13-74
+258            android:label="@string/app_name"
+258-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:254:13-45
+259            android:theme="@android:style/Theme.Light.NoTitleBar" />
+259-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:255:13-66
+260        <activity
+260-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:256:9-260:69
+261            android:name="com.example.zslDev.activity.CustomDriveWayViewActivity"
+261-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:257:13-64
+262            android:configChanges="orientation|keyboardHidden|screenSize"
+262-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:258:13-74
+263            android:label="@string/app_name"
+263-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:259:13-45
+264            android:theme="@android:style/Theme.Light.NoTitleBar" />
+264-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:260:13-66
+265        <activity
+265-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:261:9-265:69
+266            android:name="com.example.zslDev.activity.HudDisplayActivity"
+266-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:262:13-56
+267            android:configChanges="orientation|keyboardHidden|screenSize"
+267-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:263:13-74
+268            android:label="@string/app_name"
+268-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:264:13-45
+269            android:theme="@android:style/Theme.Light.NoTitleBar" />
+269-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:265:13-66
+270        <activity
+270-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:266:9-270:69
+271            android:name="com.example.zslDev.activity.IntelligentBroadcastActivity"
+271-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:267:13-66
+272            android:configChanges="orientation|keyboardHidden|screenSize"
+272-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:268:13-74
+273            android:label="@string/app_name"
+273-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:269:13-45
+274            android:theme="@android:style/Theme.Light.NoTitleBar" />
+274-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:270:13-66
+275        <activity
+275-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:271:9-276:63
+276            android:name="com.example.zslDev.activity.RoutePlanningActivity"
+276-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:272:13-59
+277            android:configChanges="orientation|keyboardHidden|screenSize"
+277-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:273:13-74
+278            android:label="@string/app_name"
+278-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:274:13-45
+279            android:theme="@android:style/Theme.Light.NoTitleBar"
+279-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:275:13-66
+280            android:windowSoftInputMode="stateAlwaysHidden" />
+280-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:276:13-60
+281        <activity
+281-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:277:9-281:69
+282            android:name="com.example.zslDev.activity.GPSNaviActivity"
+282-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:278:13-53
+283            android:configChanges="orientation|keyboardHidden|screenSize"
+283-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:279:13-74
+284            android:label="@string/app_name"
+284-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:280:13-45
+285            android:theme="@android:style/Theme.Light.NoTitleBar" />
+285-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:281:13-66
+286        <activity
+286-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:282:9-286:69
+287            android:name="com.example.zslDev.activity.CustomTrafficProgressBarActivity"
+287-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:283:13-70
+288            android:configChanges="orientation|keyboardHidden|screenSize"
+288-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:284:13-74
+289            android:label="@string/app_name"
+289-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:285:13-45
+290            android:theme="@android:style/Theme.Light.NoTitleBar" />
+290-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:286:13-66
+291        <activity
+291-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:287:9-291:69
+292            android:name="com.example.zslDev.activity.SimpleNaviActivity"
+292-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:288:13-56
+293            android:configChanges="orientation|keyboardHidden|screenSize"
+293-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:289:13-74
+294            android:label="@string/app_name"
+294-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:290:13-45
+295            android:theme="@android:style/Theme.Light.NoTitleBar" />
+295-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:291:13-66
+296        <activity
+296-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:292:9-296:69
+297            android:name="com.example.zslDev.activity.GetNaviStepsAndLinksActivity"
+297-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:293:13-66
+298            android:configChanges="orientation|keyboardHidden|screenSize"
+298-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:294:13-74
+299            android:label="@string/app_name"
+299-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:295:13-45
+300            android:theme="@android:style/Theme.Light.NoTitleBar" />
+300-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:296:13-66
+301        <activity
+301-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:297:9-301:69
+302            android:name="com.example.zslDev.activity.NorthModeActivity"
+302-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:298:13-55
+303            android:configChanges="orientation|keyboardHidden|screenSize"
+303-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:299:13-74
+304            android:label="@string/app_name"
+304-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:300:13-45
+305            android:theme="@android:style/Theme.Light.NoTitleBar" />
+305-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:301:13-66
+306        <activity
+306-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:302:9-306:69
+307            android:name="com.example.zslDev.activity.OverviewModeActivity"
+307-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:303:13-58
+308            android:configChanges="orientation|keyboardHidden|screenSize"
+308-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:304:13-74
+309            android:label="@string/app_name"
+309-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:305:13-45
+310            android:theme="@android:style/Theme.Light.NoTitleBar" />
+310-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:306:13-66
+311        <activity
+311-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:307:9-311:69
+312            android:name="com.example.zslDev.activity.BasicWalkNaviActivity"
+312-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:308:13-59
+313            android:configChanges="orientation|keyboardHidden|screenSize"
+313-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:309:13-74
+314            android:label="@string/app_name"
+314-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:310:13-45
+315            android:theme="@android:style/Theme.Light.NoTitleBar" />
+315-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:311:13-66
+316        <activity
+316-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:312:9-316:69
+317            android:name="com.example.zslDev.activity.UseExtraGpsDataActivity"
+317-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:313:13-61
+318            android:configChanges="orientation|keyboardHidden|screenSize"
+318-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:314:13-74
+319            android:label="@string/app_name"
+319-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:315:13-45
+320            android:theme="@android:style/Theme.Light.NoTitleBar" />
+320-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:316:13-66
+321        <activity
+321-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:317:9-321:69
+322            android:name="com.example.zslDev.activity.CustomCarActivity"
+322-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:318:13-55
+323            android:configChanges="orientation|keyboardHidden|screenSize"
+323-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:319:13-74
+324            android:label="@string/app_name"
+324-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:320:13-45
+325            android:theme="@android:style/Theme.Light.NoTitleBar" />
+325-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:321:13-66
+326        <activity
+326-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:322:9-326:69
+327            android:name="com.example.zslDev.activity.CustomRouteTextureInAMapNaviViewActivity"
+327-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:323:13-78
+328            android:configChanges="orientation|keyboardHidden|screenSize"
+328-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:324:13-74
+329            android:label="@string/app_name"
+329-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:325:13-45
+330            android:theme="@android:style/Theme.Light.NoTitleBar" />
+330-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:326:13-66
+331        <activity
+331-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:327:9-331:69
+332            android:name="com.example.zslDev.activity.CustomDirectionViewActivity"
+332-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:328:13-65
+333            android:configChanges="orientation|keyboardHidden|screenSize"
+333-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:329:13-74
+334            android:label="@string/app_name"
+334-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:330:13-45
+335            android:theme="@android:style/Theme.Light.NoTitleBar" />
+335-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:331:13-66
+336        <activity
+336-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:332:9-336:69
+337            android:name="com.example.zslDev.activity.CustomTrafficButtonViewActivity"
+337-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:333:13-69
+338            android:configChanges="orientation|keyboardHidden|screenSize"
+338-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:334:13-74
+339            android:label="@string/app_name"
+339-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:335:13-45
+340            android:theme="@android:style/Theme.Light.NoTitleBar" />
+340-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:336:13-66
+341        <activity
+341-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:337:9-341:69
+342            android:name="com.example.zslDev.activity.CustomNextTurnTipViewActivity"
+342-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:338:13-67
+343            android:configChanges="orientation|keyboardHidden|screenSize"
+343-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:339:13-74
+344            android:label="@string/app_name"
+344-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:340:13-45
+345            android:theme="@android:style/Theme.Light.NoTitleBar" />
+345-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:341:13-66
+346        <activity
+346-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:342:9-346:69
+347            android:name="com.example.zslDev.activity.CustomZoomButtonViewActivity"
+347-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:343:13-66
+348            android:configChanges="orientation|keyboardHidden|screenSize"
+348-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:344:13-74
+349            android:label="@string/app_name"
+349-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:345:13-45
+350            android:theme="@android:style/Theme.Light.NoTitleBar" />
+350-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:346:13-66
+351        <activity
+351-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:347:9-351:69
+352            android:name="com.example.zslDev.activity.CustomOverviewButtonViewActivity"
+352-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:348:13-70
+353            android:configChanges="orientation|keyboardHidden|screenSize"
+353-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:349:13-74
+354            android:label="@string/app_name"
+354-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:350:13-45
+355            android:theme="@android:style/Theme.Light.NoTitleBar" />
+355-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:351:13-66
+356        <activity
+356-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:352:9-356:69
+357            android:name="com.example.zslDev.activity.RestRouteShowActivity"
+357-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:353:13-59
+358            android:configChanges="orientation|keyboardHidden|screenSize"
+358-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:354:13-74
+359            android:label="@string/app_name"
+359-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:355:13-45
+360            android:theme="@android:style/Theme.Light.NoTitleBar" />
+360-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:356:13-66
+361        <activity
+361-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:357:9-361:69
+362            android:name="com.example.zslDev.activity.RouteNaviActivity"
+362-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:358:13-55
+363            android:configChanges="orientation|keyboardHidden|screenSize"
+363-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:359:13-74
+364            android:label="@string/app_name"
+364-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:360:13-45
+365            android:theme="@android:style/Theme.Light.NoTitleBar" />
+365-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:361:13-66
+366        <activity
+366-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:362:9-366:69
+367            android:name="com.example.zslDev.activity.SingleRouteCalculateActivity"
+367-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:363:13-66
+368            android:configChanges="orientation|keyboardHidden|screenSize"
+368-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:364:13-74
+369            android:label="@string/app_name"
+369-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:365:13-45
+370            android:theme="@android:style/Theme.Light.NoTitleBar" />
+370-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:366:13-66
+371        <activity
+371-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:367:9-371:69
+372            android:name="com.example.zslDev.activity.WalkRouteCalculateActivity"
+372-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:368:13-64
+373            android:configChanges="orientation|keyboardHidden|screenSize"
+373-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:369:13-74
+374            android:label="@string/app_name"
+374-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:370:13-45
+375            android:theme="@android:style/Theme.Light.NoTitleBar" />
+375-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:371:13-66
+376        <activity
+376-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:372:9-376:69
+377            android:name="com.example.zslDev.activity.RideRouteCalculateActivity"
+377-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:373:13-64
+378            android:configChanges="orientation|keyboardHidden|screenSize"
+378-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:374:13-74
+379            android:label="@string/app_name"
+379-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:375:13-45
+380            android:theme="@android:style/Theme.Light.NoTitleBar" />
+380-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:376:13-66
+381        <activity
+381-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:377:9-381:69
+382            android:name="com.example.zslDev.activity.MotorcycleRouteCalculateActivity"
+382-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:378:13-70
+383            android:configChanges="orientation|keyboardHidden|screenSize"
+383-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:379:13-74
+384            android:label="@string/app_name"
+384-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:380:13-45
+385            android:theme="@android:style/Theme.Light.NoTitleBar" />
+385-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:381:13-66
+386        <activity
+386-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:382:9-386:69
+387            android:name="com.example.zslDev.activity.EleBikeRouteCalculateActivity"
+387-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:383:13-67
+388            android:configChanges="orientation|keyboardHidden|screenSize"
+388-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:384:13-74
+389            android:label="@string/app_name"
+389-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:385:13-45
+390            android:theme="@android:style/Theme.Light.NoTitleBar" />
+390-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:386:13-66
+391        <activity
+391-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:387:9-391:69
+392            android:name="com.example.zslDev.activity.EmulatorActivity"
+392-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:388:13-54
+393            android:configChanges="orientation|keyboardHidden|screenSize"
+393-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:389:13-74
+394            android:label="@string/app_name"
+394-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:390:13-45
+395            android:theme="@android:style/Theme.Light.NoTitleBar" />
+395-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:391:13-66
+396        <activity
+396-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:392:9-396:69
+397            android:name="com.example.zslDev.activity.custom.CustomUiActivity"
+397-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:393:13-61
+398            android:configChanges="orientation|keyboardHidden|screenSize"
+398-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:394:13-74
+399            android:label="@string/app_name"
+399-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:395:13-45
+400            android:theme="@android:style/Theme.Light.NoTitleBar" />
+400-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:396:13-66
+401        <activity
+401-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:397:9-401:69
+402            android:name="com.example.zslDev.activity.DriverListActivity"
+402-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:398:13-56
+403            android:configChanges="orientation|keyboardHidden|screenSize"
+403-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:399:13-74
+404            android:label="@string/app_name"
+404-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:400:13-45
+405            android:theme="@android:style/Theme.Light.NoTitleBar" />
+405-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:401:13-66
+406        <activity
+406-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:403:9-407:69
+407            android:name="com.example.zslDev.activity.TruckRouteCalculateActivity"
+407-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:404:13-65
+408            android:configChanges="orientation|keyboardHidden|screenSize"
+408-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:405:13-74
+409            android:label="@string/app_name"
+409-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:406:13-45
+410            android:theme="@android:style/Theme.Light.NoTitleBar" />
+410-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:407:13-66
+411        <activity
+411-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:409:9-413:69
+412            android:name="com.example.zslDev.activity.SetTruckParamsActivity"
+412-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:410:13-60
+413            android:configChanges="orientation|keyboardHidden|screenSize"
+413-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:411:13-74
+414            android:label="@string/app_name"
+414-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:412:13-45
+415            android:theme="@android:style/Theme.Light.NoTitleBar" />
+415-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:413:13-66
+416        <activity
+416-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:415:9-419:69
+417            android:name="com.example.zslDev.activity.SwitchMasterRoadNaviActivity"
+417-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:416:13-66
+418            android:configChanges="orientation|keyboardHidden|screenSize"
+418-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:417:13-74
+419            android:label="@string/app_name"
+419-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:418:13-45
+420            android:theme="@android:style/Theme.Light.NoTitleBar" />
+420-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:419:13-66
+421        <activity
+421-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:421:9-425:69
+422            android:name="com.example.zslDev.activity.IflyVoiceActivity"
+422-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:422:13-55
+423            android:configChanges="orientation|keyboardHidden|screenSize"
+423-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:423:13-74
+424            android:label="@string/app_name"
+424-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:424:13-45
+425            android:theme="@android:style/Theme.Light.NoTitleBar" />
+425-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:425:13-66
+426        <activity
+426-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:427:9-431:61
+427            android:name="com.example.zslDev.activity.custom.AllCustomDriveWayActivity"
+427-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:428:13-70
+428            android:configChanges="orientation|keyboardHidden|screenSize"
+428-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:429:13-74
+429            android:label="@string/navi_custom_route_way"
+429-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:431:13-58
+430            android:screenOrientation="portrait" />
+430-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:430:13-49
+431        <activity
+431-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:433:9-437:62
+432            android:name="com.example.zslDev.activity.custom.AllCustomTrafficBarActivity"
+432-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:434:13-72
+433            android:configChanges="orientation|keyboardHidden|screenSize"
+433-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:435:13-74
+434            android:label="@string/navi_custom_traffic_bar"
+434-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:437:13-60
+435            android:screenOrientation="portrait" />
+435-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:436:13-49
+436        <activity
+436-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:438:9-442:59
+437            android:name="com.example.zslDev.activity.custom.AllCustomCrossingActivity"
+437-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:439:13-70
+438            android:configChanges="orientation|keyboardHidden|screenSize"
+438-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:440:13-74
+439            android:label="@string/navi_custom_crossing"
+439-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:442:13-57
+440            android:screenOrientation="portrait" />
+440-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:441:13-49
+441        <activity
+441-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:443:9-447:61
+442            android:name="com.example.zslDev.activity.custom.AllCustomCarRouteActivity"
+442-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:444:13-70
+443            android:configChanges="orientation|keyboardHidden|screenSize"
+443-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:445:13-74
+444            android:label="@string/navi_custom_car_route"
+444-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:447:13-58
+445            android:screenOrientation="portrait" />
+445-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:446:13-49
+446        <activity
+446-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:448:9-452:73
+447            android:name="com.example.zslDev.activity.custom.AllCustomNextRoadInfoActivity"
+447-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:449:13-74
+448            android:configChanges="orientation|keyboardHidden|screenSize"
+448-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:450:13-74
+449            android:label="@string/navi_custom_road_distance_nexttip"
+449-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:452:13-70
+450            android:screenOrientation="portrait" />
+450-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:451:13-49
+451        <activity
+451-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:454:9-458:58
+452            android:name="com.example.zslDev.activity.custom.AllCustomCameraActivity"
+452-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:455:13-68
+453            android:configChanges="orientation|keyboardHidden|screenSize"
+453-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:456:13-74
+454            android:label="@string/navi_custom_camera"
+454-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:458:13-55
+455            android:screenOrientation="portrait" />
+455-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:457:13-49
+456        <activity
+456-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:460:9-465:56
+457            android:name="com.example.zslDev.activity.custom.AllCustomNaviActivity"
+457-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:461:13-66
+458            android:configChanges="orientation|keyboardHidden|screenSize"
+458-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:462:13-74
+459            android:label="@string/navi_custom_navi"
+459-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:465:13-53
+460            android:screenOrientation="portrait"
+460-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:463:13-49
+461            android:theme="@android:style/Theme.Light.NoTitleBar" />
+461-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:464:13-66
+462        <activity
+462-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:466:9-471:47
+463            android:name="com.example.zslDev.activity.CustomAmapRouteActivity"
+463-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:467:13-61
+464            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+464-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:468:13-85
+465            android:label="自定义Activity导航组件"
+465-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:471:13-44
+466            android:screenOrientation="portrait"
+466-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:469:13-49
+467            android:theme="@android:style/Theme.Light.NoTitleBar" />
+467-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:470:13-66
+468        <activity
+468-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:473:9-478:36
+469            android:name="com.example.zslDev.activity.IndependentRouteCalculateActivity"
+469-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:474:13-71
+470            android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+470-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:475:13-85
+471            android:label="独立算路"
+471-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:478:13-33
+472            android:screenOrientation="portrait"
+472-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:476:13-49
+473            android:theme="@android:style/Theme.Light.NoTitleBar" />
+473-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:477:13-66
+474        <activity android:name="com.example.zslDev.activity.search.SearchPoiActivity" />
+474-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:479:9-71
+474-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:479:19-68
+475
+476        <!-- <activity -->
+477        <!-- android:name=".district.DistrictActivity" -->
+478        <!-- android:label="@string/district_demo" -->
+479        <!-- android:screenOrientation="portrait" /> -->
+480        <!-- 项目第三方key配置模块 -->
+481        <!-- 高德地图key -->
+482        <meta-data
+482-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:490:9-492:64
+483            android:name="com.amap.api.v2.apikey"
+483-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:491:13-50
+484            android:value="55f806e7b77aaff2b93d399a6da75ed1" />
+484-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:492:13-61
+485        <meta-data
+485-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:105:9-107:33
+486            android:name="flutterEmbedding"
+486-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:106:13-44
+487            android:value="2" /> <!-- GaoDeLocationService -->
+487-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:107:13-30
+488        <service android:name="com.amap.api.location.APSService" />
+488-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:496:9-68
+488-->F:\demoFlutter\android\app\src\main\AndroidManifest.xml:496:18-65
+489
+490        <provider
+490-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+491            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+491-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+492            android:authorities="com.example.zslDev.flutter.image_provider"
+492-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+493            android:exported="false"
+493-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+494            android:grantUriPermissions="true" >
+494-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+495            <meta-data
+495-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+496                android:name="android.support.FILE_PROVIDER_PATHS"
+496-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+497                android:resource="@xml/flutter_image_picker_file_paths" />
+497-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+498        </provider>
+499        <provider
+499-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-21:20
+500            android:name="com.crazecoder.openfile.FileProvider"
+500-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-64
+501            android:authorities="com.example.zslDev.fileProvider.com.crazecoder.openfile"
+501-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-88
+502            android:exported="false"
+502-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+503            android:grantUriPermissions="true" >
+503-->[:open_file] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\open_file-3.2.1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+504            <meta-data
+504-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+505                android:name="android.support.FILE_PROVIDER_PATHS"
+505-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+506                android:resource="@xml/filepaths" />
+506-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+507        </provider>
+508        <provider
+508-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+509            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+509-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+510            android:authorities="com.example.zslDev.fishbunfileprovider"
+510-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+511            android:exported="false"
+511-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+512            android:grantUriPermissions="true" >
+512-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+513            <meta-data
+513-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+514                android:name="android.support.FILE_PROVIDER_PATHS"
+514-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+515                android:resource="@xml/provider_paths" />
+515-->[:image_picker] F:\flutter\.pub-cache\hosted\pub.flutter-io.cn\image_picker-0.8.4+1\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+516        </provider>
+517
+518        <activity
+518-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+519            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+519-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+520            android:label="@string/album"
+520-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+521            android:theme="@style/FishBunTheme" />
+521-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+522        <activity
+522-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+523            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+523-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+524            android:theme="@style/FishBunTheme" />
+524-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+525        <activity
+525-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+526            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+526-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+527            android:theme="@style/DetailViewTheme" />
+527-->[com.sangcomz:FishBun:0.11.2] C:\Users\AppSuperDev\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+528    </application>
+529
+530</manifest>

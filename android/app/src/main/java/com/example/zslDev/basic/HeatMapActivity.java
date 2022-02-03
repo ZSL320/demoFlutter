@@ -34,10 +34,6 @@ public class HeatMapActivity extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			MapsInitializer.updatePrivacyAgree(this,true);
-			MapsInitializer.updatePrivacyShow(this,true,true);
-		}catch (Exception e){}
 		setContentView(R.layout.heatmap_activity);
 		mMapView = (MapView) findViewById(R.id.map);
 		mMapView.onCreate(savedInstanceState);

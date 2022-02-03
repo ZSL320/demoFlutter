@@ -28,10 +28,6 @@ public class LocationNetworkActivity extends Activity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			MapsInitializer.updatePrivacyAgree(this,true);
-			MapsInitializer.updatePrivacyShow(this,true,true);
-		}catch (Exception e){}
 		setContentView(R.layout.locationnetwork_activity);
 		myLocation = (TextView) findViewById(R.id.myLocation);
 //		aMapLocManager = LocationManagerProxy.getInstance(this);

@@ -1,5 +1,6 @@
 package com.example.zslDev.locationData;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ import com.example.zslDev.R;
  * </p>
  * @author hongming.wang
  */
-public class LocationDataActivity extends CheckPermissionsActivity
+public class LocationDataActivity extends Activity
         implements
         OnCheckedChangeListener,
         OnClickListener {

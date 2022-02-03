@@ -27,7 +27,7 @@ import com.example.zslDev.location.CheckPermissionsActivity;
  * create by heliquan at 2017年5月4日23:26:59
  * 基于高德地图实现显示以及定位
  */
-public class PoiAroundSearchActivity extends CheckPermissionsActivity implements LocationSource, AMapLocationListener {
+public class PoiAroundSearchActivity extends Activity implements LocationSource, AMapLocationListener {
 
     private MapView mapView;
 
@@ -51,10 +51,6 @@ public class PoiAroundSearchActivity extends CheckPermissionsActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            MapsInitializer.updatePrivacyAgree(this,true);
-            MapsInitializer.updatePrivacyShow(this,true,true);
-        }catch (Exception e){}
         setContentView(R.layout.activity_gao_de_location);
         initView();
         // 创建地图

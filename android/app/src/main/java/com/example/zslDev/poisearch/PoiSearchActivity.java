@@ -59,7 +59,7 @@ import com.example.zslDev.R;
  * create by heliquan at 2017年5月10日14:39:10
  * 实现高德地图POI检索附近
  */
-public class PoiSearchActivity extends CheckPermissionsActivity implements LocationSource,
+public class PoiSearchActivity extends Activity implements LocationSource,
         AMapLocationListener, GeocodeSearch.OnGeocodeSearchListener, PoiSearch.OnPoiSearchListener {
 
     private PoiSearchActivity self = this;
@@ -102,10 +102,6 @@ public class PoiSearchActivity extends CheckPermissionsActivity implements Locat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            MapsInitializer.updatePrivacyAgree(this,true);
-            MapsInitializer.updatePrivacyShow(this,true,true);
-        }catch (Exception e){}
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_poi_search);
         mapView = (MapView) findViewById(R.id.id_gaode_location_map);

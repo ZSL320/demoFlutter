@@ -51,10 +51,6 @@ public class LocationSourceActivity extends AppCompatActivity implements Locatio
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-			MapsInitializer.updatePrivacyAgree(this,true);
-			MapsInitializer.updatePrivacyShow(this,true,true);
-		}catch (Exception e){}
 		setContentView(R.layout.locationsource_activity);
 		mMapView = findViewById(R.id.map);
 		mMapView.onCreate(savedInstanceState);//必须调用

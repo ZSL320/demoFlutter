@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -15,5 +15,15 @@
 
     <color name="color_gaode_search_pressed">#DDd4d4d4</color>
     <color name="color_gaode_search_checked">#fff2f2f2</color>
+    <color name="grey">#ebebeb</color>
+    <color name="black">#000000</color>
+    <color name="darkgrey">#C0C0C0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#4287FF</color>
+    <color name="gray">#ddd</color>
+    <color name="darkyellow">#FFCC33</color>
 
+    <color name="gray_black">#88000000</color>
+    <color name="soft_black">#cc000000</color>
 </resources>
