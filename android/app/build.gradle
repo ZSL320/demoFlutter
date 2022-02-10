@@ -71,6 +71,7 @@ android {
             signingConfig signingConfigs.debug
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             signingConfig signingConfigs.debug
@@ -80,6 +81,11 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+//            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
         }
     }
 }
@@ -96,5 +102,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/AMap3DMap_8.1.0_AMapNavi_8.1.0_20211029.jar')
-
+    implementation files('libs\\gson-2.2.4.jar')
+    implementation files('libs\\clingsdk_v1.3.6.jar')
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'org.jetbrains:annotations:15.0'
 }

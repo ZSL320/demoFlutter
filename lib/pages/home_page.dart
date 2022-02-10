@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +18,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   int last = 0;
-
+  static final MethodChannel _MethodChannel =
+      MethodChannel("com.zhuandian.flutter/android"); //平台交互通道
+  static final EventChannel _EventChannel = EventChannel(
+      "com.zhuandian.flutter/android/event"); //原生平台主动调用flutter端事件通道
   Future<bool> doubleClickBack() {
     int now = DateTime.now().millisecondsSinceEpoch;
     if (now - last > 1000) {
@@ -28,20 +33,44 @@ class _HomePageState extends State<HomePage>
     }
   }
 
+  late EventChannel photoChannel=new EventChannel("getPhoto");
+  late MethodChannel photoMethod=new MethodChannel("sendPhotoToFlutter");
+
   late TabController _controller;
   late PageController _pageController;
-  int _tabIndex = 0;
 
+  int _tabIndex = 0;
+  String _fromNativeInfo = "";
+  StreamController<String> streamController = new StreamController<String>();
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
+    _EventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onErroe);
+    _MethodChannel.invokeMethod("nativeSendMessage2Flutter");
     _controller = TabController(length: 3, vsync: this);
     _pageController = PageController(
       initialPage: 0,
       keepPage: true,
       viewportFraction: 1,
     );
+    photoChannel.receiveBroadcastStream().listen((event) {
+      setState(() {
+        print(666666);
+        print(event);
+        streamController.sink.add(event);
+      });
+    });
+    photoMethod.invokeMethod("sendPhoto");
+  }
+
+  Future<dynamic> nativeCallHandler(MethodCall methodCall) async {
+    switch (methodCall.method) {
+      case "getFlutterResult":
+        String paramsFromNative = await methodCall.arguments["params"];
+        print("原生android传递过来的参数为------ $paramsFromNative");
+        return "result from flutter";
+    }
   }
 
   @override
@@ -49,15 +78,30 @@ class _HomePageState extends State<HomePage>
     super.didChangeAppLifecycleState(state);
     // 监听生命周期的变化
     setState(() {
-      // print(66666);
       // 更新生命状态，触发build方法的调用
     });
   }
+
+  /**
+   * 监听原生传递回来的值（通过eventChannel）
+   */
+  void _onEvent(Object? object) {
+    _fromNativeInfo = object.toString();
+    print(6666666);
+    print(object);
+    if (_fromNativeInfo != "") {
+      // streamController.sink.add(_fromNativeInfo);
+      setState(() {});
+    }
+  }
+
+  void _onErroe(Object object) {}
 
   @override
   void dispose() {
     _controller.dispose();
     WidgetsBinding.instance!.removeObserver(this);
+    streamController.close();
     super.dispose();
   }
 
@@ -111,6 +155,7 @@ class _HomePageState extends State<HomePage>
               ),
               MyChatPage(
                 title: bottomList[_tabIndex],
+                streamController: streamController,
               ),
               MySinglePage(
                 title: bottomList[_tabIndex],

@@ -5,6 +5,8 @@
     <string name="myDemo">我的demo</string>
     <string name="myDemoFinish">原生页面</string>
     <string name="location_map">定位数据</string>
+    <string name="myDemoCling">手环连接</string>
+    <string name="ClingWatch">手环SDK</string>
     <string name="myDemoListMap">高德地图demo合集</string>
     <string name="myListMapCompat">高德地图的各种使用</string>
     <string name="location_data">介绍基本地图的定位数据</string>

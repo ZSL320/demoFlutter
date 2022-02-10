@@ -1,16 +1,32 @@
 package com.example.zslDev;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 //import com.demo.app.basic.BasicMapActivity;
 
+import com.amap.api.navi.view.LoadingView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 import io.flutter.plugin.common.EventChannel;
@@ -21,6 +37,7 @@ import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 
 public class MainActivity extends FlutterActivity {
+    static final String TYPE_IMG = "image/";
     private static final String METHOD_CHANNEL = "com.zhuandian.flutter/android";
     private static final String EVENT_CHANNEL = "com.zhuandian.flutter/android/event"; //事件通道，供原生主动调用flutter端使用
     private static final String METHOD_SHOW_TOAST = "showToast";
@@ -28,6 +45,48 @@ public class MainActivity extends FlutterActivity {
     private static final String METHOD_NATIVE_SEND_MESSAGE_FLUTTER = "nativeSendMessage2Flutter"; //原生主动向flutter发送消息
     private EventChannel.EventSink eventChannel;
     private MethodChannel methodChannel;
+    private  String imagePath;
+    private LoadingView loadingView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Intent itnIn=getIntent();
+        Bundle extras = itnIn.getExtras();
+        String action = itnIn.getAction();
+        if (Intent.ACTION_SEND.equals(action)) {
+            if (extras.containsKey(Intent.EXTRA_STREAM)) {
+                try {
+                    // Get resource path from intent
+                    Uri uri2 = (Uri) extras.getParcelable(Intent.EXTRA_STREAM);
+                    File file = new File(getCacheDir(),uri2.toString().split("%")[uri2.toString().split("%").length-1]);
+                    String path = getRealPathFromURI(MainActivity.this, uri2);
+                    System.out.println(path);
+//                    imagePath = path;
+                    imagePath=file.getPath();
+                    nativeSendMessage2Flutter();
+                } catch (Exception e) {
+                    Log.e(this.getClass().getName(), e.toString());
+                }
+            }
+        }
+    }
+
+    public String getRealPathFromURI(Activity act, Uri contentUri){
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = act.managedQuery(contentUri, proj, // Which columns to return
+                null, // WHERE clause; which rows to return (all rows)
+                null, // WHERE clause selection arguments (none)
+                null); // Order-by clause (ascending by name)
+        if (cursor==null) {
+            String path = contentUri.getPath();
+            return path;
+        }
+
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
+
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
@@ -55,6 +114,8 @@ public class MainActivity extends FlutterActivity {
                     nativeSendMessage2Flutter();
                 } else if (call.method.equals("new_page")) {
                     startActivity(new Intent(MainActivity.this,  SecondActivity.class));
+                }else if(imagePath!=null){
+                    nativeSendMessage2Flutter();
                 }
             }
         });
@@ -64,7 +125,6 @@ public class MainActivity extends FlutterActivity {
             @Override
             public void onListen(Object o, EventChannel.EventSink eventSink) {
                 eventChannel = eventSink;
-                eventSink.success("事件通道准备就绪");
                 //在此不建议做耗时操作，因为当onListen回调被触发后，在此注册当方法需要执行完毕才算结束回调函数
                 //的执行，耗时操作可能会导致界面卡死，这里读者需注意！！
             }
@@ -134,6 +194,9 @@ public class MainActivity extends FlutterActivity {
     private void nativeSendMessage2Flutter() {
         //主动向flutter发送一次更新后的数据
         eventChannel.success("原生端向flutter主动发送消息");
+        if(imagePath!=null){
+            eventChannel.success(imagePath);
+        }
     }
 
 

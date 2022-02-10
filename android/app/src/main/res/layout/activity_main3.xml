@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/txtv_startScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="@string/btn_main3_StartScan" />
+
+    <Button
+        android:id="@+id/txtv_stopScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/btn_main3_StopScan" />
+
+    <Button
+        android:id="@+id/txtv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/btn_main3_DeRegi" />
+
+
+    <Button
+        android:id="@+id/txtv_bleconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtv_startScan"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="@string/btn_main3_BleConnect" />
+
+    <Button
+        android:id="@+id/txtv_bleSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtv_startScan"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/btn_main3_Setting" />
+
+    <Button
+        android:id="@+id/txtv_upgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtv_startScan"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="@string/btn_main3_UpdateFMWare" />
+
+    <Button
+        android:id="@+id/txtv_loadDeviceData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtv_bleconnect"
+        android:text="@string/btn_main3_SyncData" />
+
+    <Button
+        android:id="@+id/btn_update_clock_face"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtv_bleSetting"
+        android:layout_alignTop="@id/txtv_loadDeviceData"
+        android:layout_toRightOf="@id/txtv_loadDeviceData"
+        android:text="@string/btn_main3_ClockFace" />
+
+    <TextView
+        android:id="@+id/txtv_cal_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtv_loadDeviceData"
+        android:layout_margin="10dp"
+        android:text="0"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_get_minute_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtv_cal_data"
+        android:layout_alignParentRight="true"
+        android:text="@string/btn_main3_getMinData" />
+
+    <EditText
+        android:id="@+id/et_begin_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtv_cal_data"
+        android:layout_toLeftOf="@id/btn_get_minute_data"
+        android:hint="@string/edit_main3_DayCountBack"
+        android:inputType="number"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/listview_scanResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_get_minute_data"></ListView>
+
+</RelativeLayout>

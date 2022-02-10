@@ -20,7 +20,6 @@ import android.widget.ListView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapsInitializer;
 import com.example.zslDev.activity.IndexActivity;
 import com.example.zslDev.basic.BaseMapFragmentActivity;
@@ -37,6 +36,7 @@ import com.example.zslDev.basic.UiSettingsActivity;
 import com.example.zslDev.busline.BuslineActivity;
 //import com.demo.app.district.DistrictActivity;
 //import com.demo.app.geocoder.GeocoderActivity;
+import com.example.zslDev.cling.Main3Activity;
 import com.example.zslDev.location.LocationGPSActivity;
 import com.example.zslDev.location.LocationModeSourceActivity;
 import com.example.zslDev.location.LocationNetworkActivity;
@@ -54,23 +54,16 @@ import com.example.zslDev.overlay.PolylineActivity;
 import com.example.zslDev.poisearch.PoiAroundSearchActivity;
 import com.example.zslDev.poisearch.PoiKeywordSearchActivity;
 import com.example.zslDev.poisearch.PoiSearchActivity;
-import com.example.zslDev.util.CheckPermissionsActivity;
 import com.example.zslDev.view.FeatureView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.platform.PlatformViewFactory;
 //import com.demo.app.poisearch.PoiAroundSearchActivity;
 //import com.demo.app.poisearch.PoiKeywordSearchActivity;
 //import com.demo.app.route.RouteActivity;
 //import com.demo.app.basic.BaseMapFragmentActivity;
 
-/**
- * AMapV2地图demo总汇
- */
+
 public final class SecondActivity extends ListActivity {
     private static class DemoDetails {
         private final int titleId;
@@ -107,6 +100,8 @@ public final class SecondActivity extends ListActivity {
     }
 
     private static final DemoDetails[] demos = {
+            new DemoDetails(R.string.myDemoCling, R.string.ClingWatch,
+                    Main3Activity.class),
             new DemoDetails(R.string.myDemoListMap, R.string.myListMapCompat,
                     IndexActivity.class),
             new DemoDetails(R.string.myDemo, R.string.myDemoFinish,
@@ -194,7 +189,7 @@ public final class SecondActivity extends ListActivity {
             MapsInitializer.updatePrivacyShow(this,true,true);
         }catch (Exception e){}
         setContentView(R.layout.main_activity);
-        setTitle("3D地图Demo" + AMap.getVersion());
+        setTitle("原生集成合集");
         ListAdapter adapter = new CustomArrayAdapter(
                 this.getApplicationContext(), demos);
         setListAdapter(adapter);

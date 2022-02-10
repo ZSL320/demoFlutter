@@ -219,5 +219,14 @@
     <string name="navi_expand_switch_road">主辅路切换</string>
     <string name="navi_expand_iflyt_voice">科大讯飞语音集成</string>
 
-
+    <string name="btn_main3_StartScan">扫描</string>
+    <string name="btn_main3_StopScan">停止扫描</string>
+    <string name="btn_main3_DeRegi">反激活</string>
+    <string name="btn_main3_BleConnect">连接</string>
+    <string name="btn_main3_Setting">设置手环</string>
+    <string name="btn_main3_UpdateFMWare">固件升级</string>
+    <string name="btn_main3_SyncData">同步数据</string>
+    <string name="btn_main3_ClockFace">更新表盘</string>
+    <string name="btn_main3_getMinData">查询分钟数据</string>
+    <string name="edit_main3_DayCountBack">请输入需要查询的天数</string>
 </resources>
