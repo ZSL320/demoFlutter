@@ -64,10 +64,10 @@ class PageState extends State<AndroidPlatformPage> {
   /**
    * 监听原生传递回来的值（通过eventChannel）
    */
-  void _onEvent(Object? object) {
+  void _onEvent(object) {
     print(object.toString() + "-------------从原生主动传递过来的值");
     setState(() {
-      _fromNativeInfo = object.toString();
+      _fromNativeInfo = object["message"];
     });
   }
 

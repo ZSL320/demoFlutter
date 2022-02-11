@@ -2,9 +2,6 @@ package com.example.zslDev;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,25 +12,27 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Objects;
-
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+import static com.example.zslDev.MainActivity.mainActivity;
 
 public class shareImage extends FlutterActivity {
-    private EventChannel.EventSink eventSink;
     private MethodChannel methodChannel;
+    private String imagePath;
     static final String TYPE_IMG = "image/";
+
+    @Override
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.share_image);
+    }
 
     @Override
     public void configureFlutterEngine(@NonNull  FlutterEngine flutterEngine) {
@@ -43,25 +42,18 @@ public class shareImage extends FlutterActivity {
             @Override
             public void onMethodCall(@NonNull MethodCall call, @NotNull MethodChannel.Result result) {
                 if(call.method.equals("sendPhoto")){
+                    //关闭前一个MainActivity
+                    mainActivity.finish();
                     checkHandleShare();
+                    Intent intent=new Intent(shareImage.this,MainActivity.class);
+                    intent.putExtra("path",imagePath);
+                    startActivity(intent);
+                    shareImage.this.finish();
                 }
             }
         });
-        new EventChannel(flutterEngine.getDartExecutor().getBinaryMessenger(),"getPhoto").setStreamHandler(new EventChannel.StreamHandler() {
-            @Override
-            public void onListen(Object arguments, EventChannel.EventSink events) {
-                eventSink=events;
-            }
-
-            @Override
-            public void onCancel(Object arguments) {
-
-            }
-        });
     }
-    void sendToFlutter(String event){
-        eventSink.success(event);
-    }
+
     private void checkHandleShare() {
         Intent intent = getIntent();
         //没有intent数据
@@ -97,7 +89,7 @@ public class shareImage extends FlutterActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 95, fileOutputStream);
             fileOutputStream.flush();
             fileOutputStream.close();
-            sendToFlutter(file.getPath());
+            imagePath=file.getPath();
         }catch (Exception e)
         {
             Toast.makeText(this,"图片解析异常",Toast.LENGTH_LONG).show();
@@ -136,4 +128,33 @@ public class shareImage extends FlutterActivity {
         return new String[]{name, imgPath};
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("shareImage==========onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("shareImage==========onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("shareImage==========onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("shareImage==========onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("shareImage==========onDestroy");
+    }
 }

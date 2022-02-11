@@ -1,34 +1,13 @@
 package com.example.zslDev;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-//import com.demo.app.basic.BasicMapActivity;
-
-import com.amap.api.navi.view.LoadingView;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-
-
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -37,7 +16,6 @@ import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 
 public class MainActivity extends FlutterActivity {
-    static final String TYPE_IMG = "image/";
     private static final String METHOD_CHANNEL = "com.zhuandian.flutter/android";
     private static final String EVENT_CHANNEL = "com.zhuandian.flutter/android/event"; //事件通道，供原生主动调用flutter端使用
     private static final String METHOD_SHOW_TOAST = "showToast";
@@ -45,52 +23,20 @@ public class MainActivity extends FlutterActivity {
     private static final String METHOD_NATIVE_SEND_MESSAGE_FLUTTER = "nativeSendMessage2Flutter"; //原生主动向flutter发送消息
     private EventChannel.EventSink eventChannel;
     private MethodChannel methodChannel;
-    private  String imagePath;
-    private LoadingView loadingView;
+    private String imagePath;
+    //定义一个 Activity 的静态全局变量：
+    static Activity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent itnIn=getIntent();
-        Bundle extras = itnIn.getExtras();
-        String action = itnIn.getAction();
-        if (Intent.ACTION_SEND.equals(action)) {
-            if (extras.containsKey(Intent.EXTRA_STREAM)) {
-                try {
-                    // Get resource path from intent
-                    Uri uri2 = (Uri) extras.getParcelable(Intent.EXTRA_STREAM);
-                    File file = new File(getCacheDir(),uri2.toString().split("%")[uri2.toString().split("%").length-1]);
-                    String path = getRealPathFromURI(MainActivity.this, uri2);
-                    System.out.println(path);
-//                    imagePath = path;
-                    imagePath=file.getPath();
-                    nativeSendMessage2Flutter();
-                } catch (Exception e) {
-                    Log.e(this.getClass().getName(), e.toString());
-                }
-            }
-        }
+        Intent intent=getIntent();
+        imagePath=intent.getStringExtra("path");
+        //在OnCreate()方法中给mainActivity赋值：
+        mainActivity = this;
     }
-
-    public String getRealPathFromURI(Activity act, Uri contentUri){
-        String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = act.managedQuery(contentUri, proj, // Which columns to return
-                null, // WHERE clause; which rows to return (all rows)
-                null, // WHERE clause selection arguments (none)
-                null); // Order-by clause (ascending by name)
-        if (cursor==null) {
-            String path = contentUri.getPath();
-            return path;
-        }
-
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }
-
-
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
-//        super.configureFlutterEngine(flutterEngine);
+        super.configureFlutterEngine(flutterEngine);
         GeneratedPluginRegistrant.registerWith(flutterEngine);
         //注册插件
         flutterEngine.getPlugins().add(new MyPlatformViewPlugin());
@@ -100,6 +46,8 @@ public class MainActivity extends FlutterActivity {
             @Override
             public void onMethodCall(MethodCall call, MethodChannel.Result result) {
                 System.out.println(call.method);
+                Map <String ,String>map=new HashMap<>();
+                map.put("message","原生Android主动向flutter端发送消息");
                 if (call.method.equals(METHOD_SHOW_TOAST)) {
                     if (call.hasArgument("msg") && !TextUtils.isEmpty(call.argument("msg").toString())) {
                         Toast.makeText(MainActivity.this, call.argument("msg").toString(), Toast.LENGTH_SHORT).show();
@@ -111,11 +59,12 @@ public class MainActivity extends FlutterActivity {
                     int number2 = call.argument("number2");
                     result.success(number1 + number2); //返回两个数相加后的值
                 } else if (call.method.equals(METHOD_NATIVE_SEND_MESSAGE_FLUTTER)) {
-                    nativeSendMessage2Flutter();
+                    nativeSendMessage2Flutter(map);
                 } else if (call.method.equals("new_page")) {
                     startActivity(new Intent(MainActivity.this,  SecondActivity.class));
-                }else if(imagePath!=null){
-                    nativeSendMessage2Flutter();
+                }else if(call.method.equals("openImage")){
+                    map.put("path",imagePath);
+                    nativeSendMessage2Flutter(map);
                 }
             }
         });
@@ -136,73 +85,18 @@ public class MainActivity extends FlutterActivity {
         });
     }
 
-    //TODO 新版本flutter在configureFlutterEngine完成初始化
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-////        setContentView(R.layout.activity_main);
-//        GeneratedPluginRegistrant.registerWith(this);
-//
-//
-//        methodChannel = new MethodChannel(getFlutterView(), METHOD_CHANNEL);
-//        //接受fltuter端传递过来的方法，并做出响应逻辑处理
-//        methodChannel.setMethodCallHandler(new MethodChannel.MethodCallHandler() {
-//            @Override
-//            public void onMethodCall(MethodCall call, MethodChannel.Result result) {
-//                System.out.println(call.method);
-//                if (call.method.equals(METHOD_SHOW_TOAST)) {
-//                    if (call.hasArgument("msg") && !TextUtils.isEmpty(call.argument("msg").toString())) {
-//                        Toast.makeText(MainActivity.this, call.argument("msg").toString(), Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(MainActivity.this, "toast text must not null", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else if (call.method.equals(METHOD_NUMBER_ADD)) {
-//                    int number1 = call.argument("number1");
-//                    int number2 = call.argument("number2");
-//                    result.success(number1 + number2); //返回两个数相加后的值
-//                } else if (call.method.equals(METHOD_NATIVE_SEND_MESSAGE_FLUTTER)) {
-//                    nativeSendMessage2Flutter();
-//                } else if (call.method.equals("new_page")) {
-//                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
-//                }
-//            }
-//        });
-//
-//
-//        new EventChannel(getFlutterView(), EVENT_CHANNEL).setStreamHandler(new EventChannel.StreamHandler() {
-//            @Override
-//            public void onListen(Object o, EventChannel.EventSink eventSink) {
-//                eventChannel = eventSink;
-//                eventSink.success("事件通道准备就绪");
-//                //在此不建议做耗时操作，因为当onListen回调被触发后，在此注册当方法需要执行完毕才算结束回调函数
-//                //的执行，耗时操作可能会导致界面卡死，这里读者需注意！！
-//            }
-//
-//            @Override
-//            public void onCancel(Object o) {
-//
-//            }
-//        });
-//
-//
-//    }
-
-
     /**
      * 原生端向flutter主动发送消息；
      */
-    private void nativeSendMessage2Flutter() {
-        //主动向flutter发送一次更新后的数据
-        eventChannel.success("原生端向flutter主动发送消息");
-        if(imagePath!=null){
-            eventChannel.success(imagePath);
-        }
+    private void nativeSendMessage2Flutter(Map map) {
+        eventChannel.success(map);
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
+        System.out.println("==========onResume");
         /**
          * 这里通过methodChannel从原生android获取flutter端传递过来的值，其实跟flutter端通过invokeMethod方法回调原生android定义好的方法原理类似
          * ，但是因为flutter是作为寄主呈现在原生android上，换句话说，在flutter的UI被渲染完成之后，定义在原生安卓的相关方法定义也必定已经加载完成
@@ -235,6 +129,30 @@ public class MainActivity extends FlutterActivity {
                 System.out.println("-------------notImplemented-");
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("==========onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("==========onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("==========onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("==========onDestroy");
     }
 }
 
