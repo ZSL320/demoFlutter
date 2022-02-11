@@ -24,6 +24,7 @@ public class MainActivity extends FlutterActivity {
     private EventChannel.EventSink eventChannel;
     private MethodChannel methodChannel;
     private String imagePath;
+    private  Map <String ,String>map=new HashMap<>();
     //定义一个 Activity 的静态全局变量：
     static Activity mainActivity;
     @Override
@@ -31,6 +32,8 @@ public class MainActivity extends FlutterActivity {
         super.onCreate(savedInstanceState);
         Intent intent=getIntent();
         imagePath=intent.getStringExtra("path");
+        map.put("message",null);
+        map.put("path",null);
         //在OnCreate()方法中给mainActivity赋值：
         mainActivity = this;
     }
@@ -46,8 +49,6 @@ public class MainActivity extends FlutterActivity {
             @Override
             public void onMethodCall(MethodCall call, MethodChannel.Result result) {
                 System.out.println(call.method);
-                Map <String ,String>map=new HashMap<>();
-                map.put("message","原生Android主动向flutter端发送消息");
                 if (call.method.equals(METHOD_SHOW_TOAST)) {
                     if (call.hasArgument("msg") && !TextUtils.isEmpty(call.argument("msg").toString())) {
                         Toast.makeText(MainActivity.this, call.argument("msg").toString(), Toast.LENGTH_SHORT).show();
@@ -59,6 +60,7 @@ public class MainActivity extends FlutterActivity {
                     int number2 = call.argument("number2");
                     result.success(number1 + number2); //返回两个数相加后的值
                 } else if (call.method.equals(METHOD_NATIVE_SEND_MESSAGE_FLUTTER)) {
+                    map.put("message","原生Android主动向flutter端发送消息");
                     nativeSendMessage2Flutter(map);
                 } else if (call.method.equals("new_page")) {
                     startActivity(new Intent(MainActivity.this,  SecondActivity.class));
