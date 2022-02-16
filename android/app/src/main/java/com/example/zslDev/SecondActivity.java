@@ -16,10 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.amap.api.maps.MapsInitializer;
 import com.example.zslDev.activity.IndexActivity;
 import com.example.zslDev.basic.BaseMapFragmentActivity;
@@ -28,14 +26,11 @@ import com.example.zslDev.basic.CameraActivity;
 import com.example.zslDev.basic.EventsActivity;
 import com.example.zslDev.basic.HeatMapActivity;
 import com.example.zslDev.basic.LayersActivity;
-//import com.demo.app.basic.MapOptionActivity;
 import com.example.zslDev.basic.OpenglActivity;
 import com.example.zslDev.basic.PoiClickActivity;
 import com.example.zslDev.basic.ScreenShotActivity;
 import com.example.zslDev.basic.UiSettingsActivity;
 import com.example.zslDev.busline.BuslineActivity;
-//import com.demo.app.district.DistrictActivity;
-//import com.demo.app.geocoder.GeocoderActivity;
 import com.example.zslDev.cling.Main3Activity;
 import com.example.zslDev.location.LocationGPSActivity;
 import com.example.zslDev.location.LocationModeSourceActivity;
@@ -58,10 +53,6 @@ import com.example.zslDev.view.FeatureView;
 
 import java.util.ArrayList;
 import java.util.List;
-//import com.demo.app.poisearch.PoiAroundSearchActivity;
-//import com.demo.app.poisearch.PoiKeywordSearchActivity;
-//import com.demo.app.route.RouteActivity;
-//import com.demo.app.basic.BaseMapFragmentActivity;
 
 
 public final class SecondActivity extends ListActivity {
@@ -123,8 +114,6 @@ public final class SecondActivity extends ListActivity {
                     R.string.heatmap_description, HeatMapActivity.class),
             new DemoDetails(R.string.poiclick_demo,
                     R.string.poiclick_description, PoiClickActivity.class),
-//            new DemoDetails(R.string.mapOption_demo,
-//                    R.string.mapOption_description, MapOptionActivity.class),
             new DemoDetails(R.string.screenshot_demo,
                     R.string.screenshot_description, ScreenShotActivity.class),
             new DemoDetails(R.string.opengl_demo, R.string.opengl_description,
@@ -147,8 +136,6 @@ public final class SecondActivity extends ListActivity {
             new DemoDetails(R.string.navigatearrow_demo,
                     R.string.navigatearrow_description,
                     NavigateArrowOverlayActivity.class),
-//            new DemoDetails(R.string.geocoder_demo,
-//                    R.string.geocoder_description, GeocoderActivity.class),
             new DemoDetails(R.string.locationsource_demo,
                     R.string.locationsource_description,
                     LocationSourceActivity.class),
@@ -171,14 +158,10 @@ public final class SecondActivity extends ListActivity {
                     PoiAroundSearchActivity.class),
             new DemoDetails(R.string.busline_demo,
                     R.string.busline_description, BuslineActivity.class),
-//            new DemoDetails(R.string.route_demo, R.string.route_description,
-//                    RouteActivity.class),
             new DemoDetails(R.string.offlinemap_demo,
                     R.string.offlinemap_description, OfflineMapActivity.class),
             new DemoDetails(R.string.poi_demo,
                     R.string.demo_set, PoiSearchActivity.class),
-//            new DemoDetails(R.string.district_demo,
-//                    R.string.district_description, DistrictActivity.class)
     };
 
     @Override
@@ -192,7 +175,7 @@ public final class SecondActivity extends ListActivity {
         setTitle("原生集成合集");
         ListAdapter adapter = new CustomArrayAdapter(
                 this.getApplicationContext(), demos);
-        setListAdapter(adapter);
+        this.setListAdapter(adapter);
     }
 
     @Override
